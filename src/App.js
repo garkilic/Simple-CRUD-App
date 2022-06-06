@@ -10,6 +10,10 @@ function App() {
 	const [salary, setSalary] = useState(0);
 	const [position, setPosition] = useState("");
 
+	const displayInfo = () => {
+		console.log(name + age + country + salary + position);
+	};
+
 	return (
 		<div className="App">
 			<div className="information">
