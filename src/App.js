@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Axios from "axios";
 
 function App() {
 	// ! Variable that can be changed and sent to our database
@@ -10,8 +11,16 @@ function App() {
 	const [salary, setSalary] = useState(0);
 	const [position, setPosition] = useState("");
 
-	const displayInfo = () => {
-		console.log(name + age + country + salary + position);
+	const addEmployee = () => {
+		Axios.post("http://localhost:3001/create", {
+			name: name,
+			age: age,
+			country: country,
+			salary: salary,
+			position: position,
+		}).then(() => {
+			console.log("success");
+		});
 	};
 
 	return (
@@ -52,7 +61,7 @@ function App() {
 						setPosition(event.target.value);
 					}}
 				/>
-				<button>Add Person</button>
+				<button onClick={addEmployee}>Add Person</button>
 			</div>
 		</div>
 	);
